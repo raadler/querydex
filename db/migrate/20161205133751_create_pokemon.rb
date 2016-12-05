@@ -13,7 +13,7 @@ class CreatePokemon < ActiveRecord::Migration
       t.integer :base_happiness, null: false
       t.integer :egg_group1, null: false
       t.integer :egg_group2
-      t.integer :is_baby, null: false
+      t.boolean :is_baby, null: false, default: false
       t.integer :hatch_counter, null: false
       t.integer :lvl_100_exp, null: false
     end
