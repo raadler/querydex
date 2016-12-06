@@ -14,10 +14,10 @@ RSpec.describe Pokemon, type: :model do
   it { should_not have_valid(:ndex).when(nil, 'seven eleven', 828.3) }
 
   it { should have_valid(:height).when(0.9) }
-  it { should_not have_valid(:height).when(nil, 'very short') }
+  it { should_not have_valid(:height).when(nil, 'very short', -5) }
 
   it { should have_valid(:weight).when(12.5) }
-  it { should_not have_valid(:weight).when(nil, 'heavy') }
+  it { should_not have_valid(:weight).when(nil, 'heavy', -10) }
 
   it { should have_valid(:gender_rate).when(4) }
   it { should_not have_valid(:gender_rate).when(nil, 'four', -2, 24.8, 9) }
