@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
@@ -21,8 +20,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'rspec-support', '~> 3.5.0'
 gem 'rspec-expectations', '~> 3.5.0'
+gem 'rspec-support', '~> 3.5.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -40,8 +39,8 @@ group :development, :test do
   gem 'shoulda'
   gem 'shoulda-context'
   gem 'shoulda-matchers'
-  gem 'valid_attribute'
   gem 'pry'
+  gem 'valid_attribute'
 end
 
 group :development do
