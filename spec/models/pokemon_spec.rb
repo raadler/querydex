@@ -26,7 +26,7 @@ RSpec.describe Pokemon, type: :model do
   it { should_not have_valid(:catch_rate).when(nil, 'sixty', 0, 256) }
 
   it { should have_valid(:exp_yield).when(173) }
-  it { should_not have_valid(:exp_yield).when(nil, 'one seventy three', 333.3,) }
+  it { should_not have_valid(:exp_yield).when(nil, 'one seventy three', 333.3) }
 
   it { should have_valid(:base_happiness).when(70) }
   it { should_not have_valid(:base_happiness).when(nil, 'seventy', -1, 256, 6.1) }
@@ -40,7 +40,6 @@ RSpec.describe Pokemon, type: :model do
   it { should have_valid(:hatch_counter).when(20) }
   it { should_not have_valid(:hatch_counter).when(nil, 'twenty', -5, 2.4, 1000) }
 
-  it { should have_valid(:lvl_100_exp).when(1000000) }
+  it { should have_valid(:lvl_100_exp).when(1_000_000) }
   it { should_not have_valid(:lvl_100_exp).when(nil, 'one million', 21.78, -10) }
-
 end
