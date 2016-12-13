@@ -1,4 +1,4 @@
-#Data for Pokemon come from Corpora.
+# Data for Pokemon come from Corpora.
 
 class Pokemon < ActiveRecord::Base
   validates :name, presence: true
@@ -16,4 +16,6 @@ class Pokemon < ActiveRecord::Base
   validates :is_baby, presence: true, inclusion: { in: [true, false] }
   validates :hatch_counter, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..255 }
   validates :lvl_100_exp, presence: true, numericality: { greater_than_or_equal_to: 1, only_integer: true }
+  has_many :types, through: :pokemon_types
+  has_many :pokemon_types
 end
