@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Pokemon, type: :model do
+  describe 'associations' do
+    it { should belong_to(:type_1).class_name('Type') }
+    it { should belong_to(:type_2).class_name('Type') }
+  end
+
   it { should have_valid(:name).when('Gourgeist') }
   it { should_not have_valid(:name).when(nil, '') }
 
