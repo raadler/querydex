@@ -12,7 +12,7 @@ class Pokemon < ActiveRecord::Base
   validates :exp_yield, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :base_happiness, presence: true, numericality: { only_integer: true }, inclusion: { in: 0..255 }
   validates :egg_group1, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..16 }
-  validates :egg_group2, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..16 }
+  validates :egg_group2, numericality: { only_integer: true }
   validates :is_baby, inclusion: { in: [true, false] }
   validates :hatch_counter, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..255 }
   validates :lvl_100_exp, presence: true, numericality: { greater_than_or_equal_to: 1, only_integer: true }
