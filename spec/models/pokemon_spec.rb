@@ -40,7 +40,7 @@ RSpec.describe Pokemon, type: :model do
   it { should_not have_valid(:egg_group1).when(nil, 'eleven', -4, 3.14, 17) }
 
   it { should have_valid(:egg_group2).when(2) }
-  it { should_not have_valid(:egg_group2).when('thirty', -6, 6.5, 17) }
+  it { should_not have_valid(:egg_group2).when('thirty') }
 
   it { should have_valid(:hatch_counter).when(20) }
   it { should_not have_valid(:hatch_counter).when(nil, 'twenty', -5, 2.4, 1000) }
