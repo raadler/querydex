@@ -1,0 +1,1 @@
+Pokemon.where(name: "Charizard")
