@@ -1,6 +1,0 @@
-Pokemon.where(name: "Charizard")
-Pokemon.all.select("name, ndex").order(:ndex)
-Pokemon.where("type_1_id = 7 AND type_2_id = 3")
-type_1 = Type.find_by(name: 'Bug')
-type_2 = Type.find_by(name: 'Flying')
-Pokemon.where(type_1: type_1, type_2: type_2)
