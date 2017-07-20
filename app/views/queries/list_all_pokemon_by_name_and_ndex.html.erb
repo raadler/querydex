@@ -1,0 +1,9 @@
+<h2>A list of all the Pokemon by name and national pokedex number</h2>
+<table>
+  <% @pokemons.each do |pokemon| %>
+    <tr>
+      <td><%= pokemon.name %></td>
+      <td><%= pokemon.ndex %></td>
+    </tr>
+  <% end %>
+</tabe>

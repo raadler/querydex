@@ -1,0 +1,19 @@
+<h2>All the Bug and Flying Pokemon</h2>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Species</td>
+    <td>National Dex</td>
+    <td>Height</td>
+    <td>Weight</td>
+  </tr>
+  <% @pokemons.each do |pokemon| %>
+    <tr>
+      <td><%= pokemon.name %></td>
+      <td><%= pokemon.species %></td>
+      <td><%= pokemon.ndex %></td>
+      <td><%= pokemon.height %></td>
+      <td><%= pokemon.weight %></td>
+    </tr>
+  <% end %>
+</tabe>
