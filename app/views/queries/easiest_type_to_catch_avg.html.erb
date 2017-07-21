@@ -1,0 +1,18 @@
+<h2>Easiest to Catch Type of Pokemon (on average)</h2>
+<table>
+  <tr>
+    <td>Type</td>
+    <td>Average Catch Rate</td>
+  </tr>
+  <tr>
+    <td><%= @easiest_to_catch_type_name %></td>
+    <td><%= @easiest_to_catch_type_average %></td>
+  </tr>
+</table>
+
+<h4>All of the type averages</h4>
+<ul>
+  <% @type_sorted.reverse.each do |average| %>
+    <li><%= average[0]%> <%= average[1] %></li>
+  <% end %>
+</ul>
