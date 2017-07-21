@@ -1,4 +1,4 @@
-<h2>All the Bug and Flying Pokemon</h2>
+<h2>All the Bug or Flying Pokemon</h2>
 <table>
   <tr>
     <td>Name</td>
@@ -6,6 +6,8 @@
     <td>National Dex</td>
     <td>Height</td>
     <td>Weight</td>
+    <td>Type 1</td>
+    <td>Type 2</td>
   </tr>
   <% @pokemons.each do |pokemon| %>
     <tr>
@@ -14,6 +16,10 @@
       <td><%= pokemon.ndex %></td>
       <td><%= pokemon.height %></td>
       <td><%= pokemon.weight %></td>
+      <td><%= pokemon.type_1.name %></td>
+      <% if pokemon.type_2 %>
+        <td><%= pokemon.type_2.name %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
