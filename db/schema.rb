@@ -11,31 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627171633) do
+ActiveRecord::Schema.define(version: 20170723205456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "pokemons", force: :cascade do |t|
-    t.string   "name",                           null: false
-    t.string   "species",                        null: false
-    t.integer  "gen_id",                         null: false
-    t.integer  "ndex",                           null: false
-    t.float    "height",                         null: false
-    t.float    "weight",                         null: false
-    t.integer  "gender_rate",                    null: false
-    t.integer  "catch_rate",                     null: false
-    t.integer  "exp_yield",                      null: false
-    t.integer  "base_happiness",                 null: false
-    t.integer  "egg_group1",                     null: false
+    t.string   "name",                             null: false
+    t.string   "species",                          null: false
+    t.integer  "gen_id",                           null: false
+    t.integer  "ndex",                             null: false
+    t.float    "height",                           null: false
+    t.float    "weight",                           null: false
+    t.integer  "gender_rate",                      null: false
+    t.integer  "catch_rate",                       null: false
+    t.integer  "exp_yield",                        null: false
+    t.integer  "base_happiness",                   null: false
+    t.integer  "egg_group1",                       null: false
     t.integer  "egg_group2"
-    t.boolean  "is_baby",        default: false, null: false
-    t.integer  "hatch_counter",                  null: false
-    t.integer  "lvl_100_exp",                    null: false
+    t.boolean  "is_baby",          default: false, null: false
+    t.integer  "hatch_counter",                    null: false
+    t.integer  "lvl_100_exp",                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "type_1_id"
     t.integer  "type_2_id"
+    t.string   "bulbapedia_link"
+    t.string   "bulbapedia_image"
   end
 
   create_table "types", force: :cascade do |t|
