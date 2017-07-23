@@ -25,8 +25,15 @@ created_pokemon = Pokemon.create({name: pokemon["name"],
    hatch_counter: pokemon["hatch_counter"].to_i,
    lvl_100_exp: pokemon["lvl_100_exp"].to_i,
    type_1_id: pokemon["type1_id"].to_i,
-   type_2_id: pokemon["type2_id"].to_i})
+   type_2_id: pokemon["type2_id"].to_i,
+   })
 end
+Pokemon.all.each do |pokemon|
+  ndex_formatted = "%03d" % pokemon.ndex
+  pokemon.update(bulbapedia_link: "https://bulbapedia.bulbagarden.net/wiki/#{pokemon.name}(Pok%C3%A9mon)",
+  bulbapedia_image: "https://bulbapedia.bulbagarden.net/wiki/File:#{ndex_formatted}#{pokemon.name}.png")
+end
+
 
 CSV.foreach("typefile.csv", :headers => true) do |type|
   created_types = Type.create({name: type[1]})
