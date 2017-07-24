@@ -8,6 +8,8 @@
     <td>Weight</td>
     <td>Type 1</td>
     <td>Type 2</td>
+    <td>Bulbapedia</td>
+    <td>Picture</td>
   </tr>
   <% @pokemons.each do |pokemon| %>
     <tr>
@@ -19,7 +21,11 @@
       <td><%= pokemon.type_1.name %></td>
       <% if pokemon.type_2 %>
         <td><%= pokemon.type_2.name %></td>
+      <% else %>
+        <td>(None)</td>
       <% end %>
+      <td><%= link_to(pokemon.name, pokemon.bulbapedia_link) %></td>
+      <td><%= image_tag(pokemon.bulbapedia_image) %></td>
     </tr>
   <% end %>
 </table>
