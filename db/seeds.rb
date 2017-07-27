@@ -28,10 +28,9 @@ created_pokemon = Pokemon.create({name: pokemon["name"],
    type_2_id: pokemon["type2_id"].to_i,
    })
 end
+
 Pokemon.all.each do |pokemon|
-  ndex_formatted = "%03d" % pokemon.ndex
-  pokemon.update(bulbapedia_link: "https://bulbapedia.bulbagarden.net/wiki/#{pokemon.name}_(Pok%C3%A9mon)",
-  bulbapedia_image: "https://bulbapedia.bulbagarden.net/wiki/File:#{ndex_formatted}#{pokemon.name}.png")
+  pokemon.update(bulbapedia_link: "https://bulbapedia.bulbagarden.net/wiki/#{pokemon.name}_(Pok%C3%A9mon)")
 end
 
 
