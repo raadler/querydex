@@ -9,6 +9,7 @@
     <td>Weight</td>
     <td>Type 1</td>
     <td>Type 2</td>
+    <td>Bulbapedia Link</td>
   </tr>
   <% @pokemons.each do |pokemon| %>
     <tr>
@@ -21,7 +22,10 @@
       <td><%= pokemon.type_1.name %></td>
       <% if pokemon.type_2 %>
         <td><%= pokemon.type_2.name %></td>
+      <% else %>
+        <td></td>
       <% end %>
+      <td><%= link_to(pokemon.name, pokemon.bulbapedia_link) %></td>
     </tr>
   <% end %>
 </table>
