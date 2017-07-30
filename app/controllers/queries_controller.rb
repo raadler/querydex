@@ -52,6 +52,13 @@ class QueriesController < ApplicationController
     @pokemon = Pokemon.select(:name, :catch_rate, :ndex, :bulbapedia_link).where("catch_rate >= 225").sample
   end
 
+  def exp_for_3_pokemon_to_reach_lvl_100
+    @pokemon1 = Pokemon.find_by(name: 'Bulbasaur')
+    @pokemon2 = Pokemon.find_by(name: 'Charmander')
+    @pokemon3 = Pokemon.find_by(name: 'Squirtle')
+    @poke_sum = @pokemon1.lvl_100_exp + @pokemon2.lvl_100_exp + @pokemon3.lvl_100_exp
+  end
+
   def index
     @queries = {
       "Find a pokemon by name" => find_single_pokemon_by_name_path,
@@ -61,7 +68,8 @@ class QueriesController < ApplicationController
       "Find all the easiest to catch pokemon" => easiest_to_catch_path,
       "Top 10 easiest to catch pokemon" => top_10_easiest_to_catch_path,
       "Easiest type of pokemon to catch" => easiest_type_to_catch_avg_path,
-      "A random pokemon with a good catch rate" => random_pokemon_with_good_catch_rate_path
+      "A random pokemon with a good catch rate" => random_pokemon_with_good_catch_rate_path,
+      "Exp for 3 pokemon to reach level 100" => exp_for_3_pokemon_to_reach_lvl_100_path
     }
   end
   def show
