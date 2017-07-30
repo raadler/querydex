@@ -48,6 +48,10 @@ class QueriesController < ApplicationController
     @easiest_to_catch_type_average = @type_sorted.last[1]
   end
 
+  def random_pokemon_with_good_catch_rate
+    @pokemon = Pokemon.select(:name, :catch_rate, :ndex, :bulbapedia_link).where("catch_rate >= 225").sample
+  end
+
   def index
     @queries = {
       "Find a pokemon by name" => find_single_pokemon_by_name_path,
@@ -56,7 +60,8 @@ class QueriesController < ApplicationController
       "Find pokemon of either of two types" => find_all_pokemon_of_type_1_or_type_2_path,
       "Find all the easiest to catch pokemon" => easiest_to_catch_path,
       "Top 10 easiest to catch pokemon" => top_10_easiest_to_catch_path,
-      "Easiest type of pokemon to catch" => easiest_type_to_catch_avg_path
+      "Easiest type of pokemon to catch" => easiest_type_to_catch_avg_path,
+      "A random pokemon with a good catch rate" => random_pokemon_with_good_catch_rate_path
     }
   end
   def show

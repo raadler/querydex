@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/easiest_to_catch', to: 'queries#easiest_to_catch'
   get '/top_10_easiest_to_catch', to: 'queries#top_10_easiest_to_catch'
   get '/easiest_type_to_catch_avg', to: 'queries#easiest_type_to_catch_avg'
+  get '/random_pokemon_with_good_catch_rate', to: 'queries#random_pokemon_with_good_catch_rate'
 end
