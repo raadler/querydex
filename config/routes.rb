@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get '/easiest_type_to_catch_avg', to: 'queries#easiest_type_to_catch_avg'
   get '/random_pokemon_with_good_catch_rate', to: 'queries#random_pokemon_with_good_catch_rate'
   get '/exp_for_3_pokemon_to_reach_lvl_100', to: 'queries#exp_for_3_pokemon_to_reach_lvl_100'
+  get '/first_10_pokemon_by_ndex', to: 'queries#first_10_pokemon_by_ndex'
 end
