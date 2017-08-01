@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/exp_for_3_pokemon_to_reach_lvl_100', to: 'queries#exp_for_3_pokemon_to_reach_lvl_100'
   get '/first_10_pokemon_of_gen_2_by_ndex', to: 'queries#first_10_pokemon_of_gen_2_by_ndex'
   get '/all_not_seed_pokemon', to: 'queries#all_not_seed_pokemon'
+  get '/number_of_primary_pokemon_of_each_type', to: 'queries#number_of_primary_pokemon_of_each_type'
 end
