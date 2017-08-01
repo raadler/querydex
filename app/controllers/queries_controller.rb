@@ -10,7 +10,7 @@ class QueriesController < ApplicationController
   def find_all_pokemon_of_type_1_and_type_2
     type_1 = Type.find_by(name: 'Bug')
     type_2 = Type.find_by(name: 'Flying')
-    @pokemons = Pokemon.where(type_1: type_1, type_2: type_2)
+    @pokemons = Pokemon.where(type_1: type_1, type_2: type_2).order(:ndex)
   end
 
   def find_all_pokemon_of_type_1_or_type_2
@@ -60,6 +60,10 @@ class QueriesController < ApplicationController
     @pokemons = Pokemon.where(gen_id: 2).order(:ndex).limit(10)
   end
 
+  def all_not_seed_pokemon
+    @pokemons = Pokemon.where.not(species: "Seed").order(:ndex)
+  end
+
   def index
     @queries = {
       "Find a pokemon by name" => find_single_pokemon_by_name_path,
@@ -71,9 +75,8 @@ class QueriesController < ApplicationController
       "Easiest type of pokemon to catch" => easiest_type_to_catch_avg_path,
       "A random pokemon with a good catch rate" => random_pokemon_with_good_catch_rate_path,
       "Exp for 3 pokemon to reach level 100" => exp_for_3_pokemon_to_reach_lvl_100_path,
-      "The first 10 pokemon of generation 2, by national dex" => first_10_pokemon_of_gen_2_by_ndex_path
+      "The first 10 pokemon of generation 2, by national dex" => first_10_pokemon_of_gen_2_by_ndex_path,
+      "All the pokemon whose species isn't seed" => all_not_seed_pokemon_path
     }
-  end
-  def show
   end
 end
