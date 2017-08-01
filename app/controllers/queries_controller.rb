@@ -4,11 +4,10 @@ class QueriesController < ApplicationController
   end
 
   def list_all_pokemon_by_name_and_ndex
-    @pokemons = Pokemon.all.select("name, ndex").order(:ndex)
+    @pokemons = Pokemon.select("name, ndex").order(:ndex)
   end
 
   def find_all_pokemon_of_type_1_and_type_2
-    # Pokemon.where("type_1_id = 7 AND type_2_id = 3")
     type_1 = Type.find_by(name: 'Bug')
     type_2 = Type.find_by(name: 'Flying')
     @pokemons = Pokemon.where(type_1: type_1, type_2: type_2)
@@ -25,14 +24,12 @@ class QueriesController < ApplicationController
   end
 
   def easiest_to_catch
-    by_catch_rate = Pokemon.order(catch_rate: :desc)
-    easiest_rate = by_catch_rate.first.catch_rate
+    easiest_rate = by_catch_rate = Pokemon.order(catch_rate: :desc).first.catch_rate
     @pokemons = Pokemon.where(catch_rate: easiest_rate)
   end
 
   def top_10_easiest_to_catch
-    by_catch_rate = Pokemon.order(catch_rate: :desc)
-    easiest_rate = by_catch_rate.first.catch_rate
+    easiest_rate = by_catch_rate = Pokemon.order(catch_rate: :desc).first.catch_rate
     all_easiest = Pokemon.where(catch_rate: easiest_rate)
     @pokemons = all_easiest.order(weight: :desc).limit(10)
   end
