@@ -1,0 +1,13 @@
+<h2>Number of pokemon with each type as the primary type</h2>
+<table>
+  <tr>
+    <td>Type</td>
+    <td>Total</td>
+  </tr>
+  <% @totals.each do |type, total| %>
+    <tr>
+      <td><%= type %></td>
+      <td><%= total %></td>
+    </tr>
+  <% end %>
+</table>

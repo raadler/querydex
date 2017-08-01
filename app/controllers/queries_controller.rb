@@ -35,10 +35,10 @@ class QueriesController < ApplicationController
   end
 
   def easiest_type_to_catch_avg
-    type_names = ["Normal", "Fighting", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", "Steel", "Fire", "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon", "Dark"]
+    type_names = Type.pluck(:name)
     type_averages = {}
     type_names.each_with_index do |name, index|
-      type_averages[name] = Pokemon.where("type_1_id = #{index} OR type_2_id = #{index}").average("catch_rate").to_i
+      type_averages[name] = Pokemon.where("type_1_id = #{index + 1} OR type_2_id = #{index + 1}").average("catch_rate").to_i
     end
     @type_sorted = type_averages.sort_by {|key, value| value}
     @easiest_to_catch_type_name = @type_sorted.last[0]
@@ -63,6 +63,15 @@ class QueriesController < ApplicationController
   def all_not_seed_pokemon
     @pokemons = Pokemon.where.not(species: "Seed").order(:ndex)
   end
+  def number_of_primary_pokemon_of_each_type
+    total_hash = Pokemon.order(:type_1_id).group(:type_1_id).count
+    types = Type.pluck(:name)
+    #The above gets us the result we want, but this way the type names are the keys
+    @totals = {}
+    total_hash.each do |type_id, total|
+      @totals[types[type_id -1]] = total
+    end
+  end
 
   def index
     @queries = {
@@ -76,7 +85,8 @@ class QueriesController < ApplicationController
       "A random pokemon with a good catch rate" => random_pokemon_with_good_catch_rate_path,
       "Exp for 3 pokemon to reach level 100" => exp_for_3_pokemon_to_reach_lvl_100_path,
       "The first 10 pokemon of generation 2, by national dex" => first_10_pokemon_of_gen_2_by_ndex_path,
-      "All the pokemon whose species isn't seed" => all_not_seed_pokemon_path
+      "All the pokemon whose species isn't seed" => all_not_seed_pokemon_path,
+      "Number of Pokemon of with each type as primary" => number_of_primary_pokemon_of_each_type_path
     }
   end
 end
