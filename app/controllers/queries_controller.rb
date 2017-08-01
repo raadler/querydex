@@ -59,8 +59,8 @@ class QueriesController < ApplicationController
     @poke_sum = @pokemon1.lvl_100_exp + @pokemon2.lvl_100_exp + @pokemon3.lvl_100_exp
   end
 
-  def first_10_pokemon_by_ndex
-    @pokemons = Pokemon.order(:ndex).limit(10)
+  def first_10_pokemon_of_gen_2_by_ndex
+    @pokemons = Pokemon.where(gen_id: 2).order(:ndex).limit(10)
   end
 
   def index
@@ -74,7 +74,7 @@ class QueriesController < ApplicationController
       "Easiest type of pokemon to catch" => easiest_type_to_catch_avg_path,
       "A random pokemon with a good catch rate" => random_pokemon_with_good_catch_rate_path,
       "Exp for 3 pokemon to reach level 100" => exp_for_3_pokemon_to_reach_lvl_100_path,
-      "The first 10 pokemon, by national dex" => first_10_pokemon_by_ndex_path
+      "The first 10 pokemon of generation 2, by national dex" => first_10_pokemon_of_gen_2_by_ndex_path
     }
   end
   def show
