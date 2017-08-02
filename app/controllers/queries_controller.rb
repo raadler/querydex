@@ -73,6 +73,12 @@ class QueriesController < ApplicationController
     end
   end
 
+  def five_random_female_male_genderless
+    @female = Pokemon.where(gender_rate: 8).sample(5)
+    @male = Pokemon.where(gender_rate: 0).sample(5)
+    @genderless = Pokemon.where(gender_rate: -1).sample(5)
+  end
+
   def index
     @queries = {
       "Find a pokemon by name" => find_single_pokemon_by_name_path,
@@ -86,7 +92,8 @@ class QueriesController < ApplicationController
       "Exp for 3 pokemon to reach level 100" => exp_for_3_pokemon_to_reach_lvl_100_path,
       "The first 10 pokemon of generation 2, by national dex" => first_10_pokemon_of_gen_2_by_ndex_path,
       "All the pokemon whose species isn't seed" => all_not_seed_pokemon_path,
-      "Number of Pokemon of with each type as primary" => number_of_primary_pokemon_of_each_type_path
+      "Number of Pokemon of with each type as primary" => number_of_primary_pokemon_of_each_type_path,
+      "Five random female, male, and genderless pokemon" => five_random_female_male_genderless_path
     }
   end
 end
