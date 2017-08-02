@@ -1,4 +1,7 @@
 require 'csv'
+require 'rubygems'
+require 'nokogiri'
+require 'open-uri'
 
 class Integer
   def to_b
@@ -29,9 +32,19 @@ created_pokemon = Pokemon.create({name: pokemon["name"],
    })
 end
 
+#Add the Bulbapedia links to the pokemon
 Pokemon.all.each do |pokemon|
   pokemon.update(bulbapedia_link: "https://bulbapedia.bulbagarden.net/wiki/#{pokemon.name}_(Pok%C3%A9mon)")
 end
+
+#Add the Bulbapedia images to the pokemon
+# Pokemon.all.each do |pokemon|
+#   number_fixed = "%03d" % pokemon.ndex
+#   name_fixed = pokemon.name.delete!("^\u{0000}-\u{007F}")
+#   page = Nokogiri::HTML(open("https://bulbapedia.bulbagarden.net/wiki/File:#{number_fixed}#{name_fixed}.png"))
+#   image = page.css("#mw-content-text").css('a').css('img')[0]["src"]
+#   pokemon.update(bulbapedia_image: "https:#{image}")
+# end
 
 
 CSV.foreach("typefile.csv", :headers => true) do |type|
