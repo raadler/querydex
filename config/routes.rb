@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get '/all_not_seed_pokemon', to: 'queries#all_not_seed_pokemon'
   get '/number_of_primary_pokemon_of_each_type', to: 'queries#number_of_primary_pokemon_of_each_type'
   get '/five_random_female_male_genderless', to: 'queries#five_random_female_male_genderless'
+  get '/all_pokemon_with_longest_name', to: 'queries#all_pokemon_with_longest_name'
 end
