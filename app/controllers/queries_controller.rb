@@ -79,6 +79,11 @@ class QueriesController < ApplicationController
     @genderless = Pokemon.where(gender_rate: -1).sample(5)
   end
 
+  def all_pokemon_with_longest_name
+    longest_length = Pokemon.order("LENGTH(name) DESC").first.name.length
+    @all_longest = Pokemon.where("LENGTH(name) = #{longest_length}")
+  end
+
   def index
     @queries = {
       "Find a pokemon by name" => find_single_pokemon_by_name_path,
@@ -93,7 +98,8 @@ class QueriesController < ApplicationController
       "The first 10 pokemon of generation 2, by national dex" => first_10_pokemon_of_gen_2_by_ndex_path,
       "All the pokemon whose species isn't seed" => all_not_seed_pokemon_path,
       "Number of Pokemon of with each type as primary" => number_of_primary_pokemon_of_each_type_path,
-      "Five random female, male, and genderless pokemon" => five_random_female_male_genderless_path
+      "Five random female, male, and genderless pokemon" => five_random_female_male_genderless_path,
+      "Pokemon with the longest names(s)" => all_pokemon_with_longest_name_path
     }
   end
 end
