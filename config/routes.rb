@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get '/first_10_pokemon_of_gen_2_by_ndex', to: 'queries#first_10_pokemon_of_gen_2_by_ndex'
   get '/all_not_seed_pokemon', to: 'queries#all_not_seed_pokemon'
   get '/number_of_primary_pokemon_of_each_type', to: 'queries#number_of_primary_pokemon_of_each_type'
+  get '/five_random_female_male_genderless', to: 'queries#five_random_female_male_genderless'
 end
