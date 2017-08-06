@@ -51,10 +51,11 @@ class QueriesController < ApplicationController
   end
 
   def exp_for_3_pokemon_to_reach_lvl_100
-    @pokemon1 = Pokemon.find_by(name: 'Bulbasaur')
-    @pokemon2 = Pokemon.find_by(name: 'Charmander')
-    @pokemon3 = Pokemon.find_by(name: 'Squirtle')
-    @poke_sum = @pokemon1.lvl_100_exp + @pokemon2.lvl_100_exp + @pokemon3.lvl_100_exp
+    # @pokemon1 = Pokemon.find_by(name: 'Bulbasaur')
+    # @pokemon2 = Pokemon.find_by(name: 'Charmander')
+    # @pokemon3 = Pokemon.find_by(name: 'Squirtle')
+    # @poke_sum = @pokemon1.lvl_100_exp + @pokemon2.lvl_100_exp + @pokemon3.lvl_100_exp
+    @poke_sum = Pokemon.where(name: ["Bulbasaur","Charmander", "Squirtle"]).sum(:lvl_100_exp)
   end
 
   def first_10_pokemon_of_gen_2_by_ndex
