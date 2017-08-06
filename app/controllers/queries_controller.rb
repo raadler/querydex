@@ -14,13 +14,14 @@ class QueriesController < ApplicationController
   end
 
   def find_all_pokemon_of_type_1_or_type_2
-    type_a = Type.find_by(name: 'Bug')
-    type_b = Type.find_by(name: 'Flying')
-    bug_first = Pokemon.where(type_1: type_a)
-    bug_second = Pokemon.where(type_2: type_a)
-    flying_first = Pokemon.where(type_1: type_b)
-    flying_second = Pokemon.where(type_2: type_b)
-    @pokemons = bug_first + bug_second + flying_first + flying_second
+    # type_a = Type.find_by(name: 'Bug')
+    # type_b = Type.find_by(name: 'Flying')
+    # bug_first = Pokemon.where(type_1: type_a)
+    # bug_second = Pokemon.where(type_2: type_a)
+    # flying_first = Pokemon.where(type_1: type_b)
+    # flying_second = Pokemon.where(type_2: type_b)
+    # @pokemons = bug_first + bug_second + flying_first + flying_second
+    @pokemons = Pokemon.where("type_1_id = ? OR type_2_id = ? OR type_1_id = ? OR type_2_id = ?", 7,7,3,3).order(:ndex)
   end
 
   def easiest_to_catch
